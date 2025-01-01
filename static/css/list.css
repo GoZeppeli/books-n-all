@@ -8,6 +8,7 @@
 .search-wrap {
     position: sticky;
     top: -25px;
+    max-width: 70vw;
     margin-top: -50px;
     margin-bottom: 50px;
     background-color: white;
@@ -27,7 +28,7 @@
     height: 50px;
     border-radius: 10px;
     font-size: 18px;
-    width: 50vw;
+    width: calc(50vw - 6px);
     padding-left: 6px;
 }
 
@@ -130,6 +131,7 @@
     border-bottom:solid 2px #720000 ;
     grid-template-columns: 200px 1fr;
     gap: 15px;
+    width: 100%;
 }
 
 .card h1 {
@@ -181,16 +183,13 @@
 }
 
 .edit-block {
-    height: 100vh;
     width: 70vh;
     padding: 0 10vh;
     background-color: #720000;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: none;
+    padding-bottom: 100px;
 }
+
 
 .edit-block input {
     border: none;
@@ -315,4 +314,34 @@
     padding: 0 30px;
     cursor: pointer;
     transition: 0.3s;
+}
+
+@media (max-width: 1000px) {
+    .white {
+        width: 70vw;
+    }
+
+    #search {
+        width: calc(70vw - 6px);
+    }
+
+    .scroll-wrapper {
+        width: 70vw;
+    }
+
+    .big-btn {
+        transform: scale(0.8);
+    }
+
+    .other-block {
+        font-size: 12px;
+    }
+
+    .edit-block {
+        max-width: calc(100vw - 20vh);
+    }
+
+    .edit-block button {
+        font-size: 30px;
+    }
 }

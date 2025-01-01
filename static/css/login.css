@@ -5,13 +5,15 @@
     border-radius: 50%;
     position: absolute;
     bottom: -10vh;
-    left: 40%;
+    left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 1;
+    max-width: 90vw;
+    max-height: 90vw;
 }
 
 .circle-login form {
@@ -108,4 +110,36 @@
 
 .bg-image img {
     height: 100%;
+}
+
+@media (max-width: 700px) {
+
+    .circle-login {
+        bottom: 5%;
+        left: 60%;
+        max-width: 110vw;
+        max-height: 110vw;
+    }
+
+    .circle-login input {
+        font-size: 16px;
+        height: 40px;
+    }
+
+    .circle-login h1 {
+        font-size: 18px;
+    }
+
+    .circle-login h1 {
+        font-size: 18px;
+    }
+
+    .circle-login button {
+        font-size: 35px;
+        height: 60px;
+    }
+
+    main {
+        width: 100%;
+    }
 }
