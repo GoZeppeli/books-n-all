@@ -185,7 +185,6 @@
 .edit-block {
     width: 70vh;
     padding: 0 10vh;
-    padding-top: 15vh;
     padding-bottom: 5vh;
     background-color: #720000;
     display: none;
@@ -195,7 +194,8 @@
     left: 50%;
     transform: translateX(-50%);
     max-width: calc(100vw - 20vh);
-    height: 80vh;
+    height: 100vh;
+    z-index: 10;
 }
 
 
@@ -402,6 +402,11 @@
     .edit-block input {
         height: 40px;
         font-size: 20px;
+    }
+
+    .edit-block {
+        padding-top: 15vh;
+        max-height: 80vh;
     }
 }
 
