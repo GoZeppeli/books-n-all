@@ -7,8 +7,7 @@
 
 .search-wrap {
     position: sticky;
-    top: -25px;
-    max-width: 70vw;
+    top: -25px; 
     margin-top: -50px;
     margin-bottom: 50px;
     background-color: white;
@@ -334,7 +333,7 @@
     }
 
     .other-block {
-        font-size: 12px;
+        font-size: 10px;
     }
 
     .edit-block {
@@ -343,5 +342,46 @@
 
     .edit-block button {
         font-size: 30px;
+    }
+}
+
+@media (max-width: 700px) {
+    .card .img-wrap {
+        width: 160px;
+        height: 240px;
+    }
+
+    .card {
+        grid-template-columns: 160px 1fr;
+    }
+
+    .big-btn {
+        transform: scale(0.6) translateX(-50px);
+    }
+
+    .card h1 {
+        font-size: 24px;
+    }
+
+    .card h3 {
+        font-size: 16px;
+    }
+
+    .card p {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .white {
+        width: 90vw;
+    }
+
+    #search {
+        width: calc(90vw - 6px);
+    }
+
+    .scroll-wrapper {
+        width: 90vw;
     }
 }

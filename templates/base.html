@@ -12,6 +12,8 @@
 <body>    
     <script>
         function openmenu(){
+            window.scrollTo(0,0)
+
             c = document.querySelector('.menu_circle')
             c.style.height = "120vh"
             c.style.width = "120vh"
@@ -36,8 +38,6 @@
             o = document.querySelector('.overlay')
             o.style.display = "block"
             
-            l = document.querySelector('.logo_home')
-            l.style.transform = "none"
         }
 
         function closemenu(){
