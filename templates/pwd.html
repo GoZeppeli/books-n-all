@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+<style>
+    body {
+        overflow: hidden;
+    }
+
+    .circle-login button {
+        font-size: 55px;
+    }
+
+</style>
+
+        <div class="circle-login">
+            <form method="POST" action="{{url_for('pwd', user=data) }}">
+                <h1>Nouveau mot de passe</h1>
+                <input type="password" name="password" required  autocomplete="off">
+                <button type="submit">nouveau mot de passe</button>
+            </form>
+        </div>
+
+        <div class="bg-image">
+            <img src="{{ url_for('static', filename='img/index.png') }}" alt="cover">
+        </div>
+
+{% endblock %}

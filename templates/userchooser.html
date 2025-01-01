@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        overflow: hidden;
+    }
+</style>
+<div class="circle-login">
+    <form action="/choose-user" method="POST" class="choose-block">
+    <select name="user" id="user" required style="margin-top: 10px;">
+        <option value="">--Choisir un autre utilisateur--</option>
+        {% for item in data %}
+            <option value="{{ item._id }}">{{ item.username }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit">choisir cet utilisateur</button>
+
+    </form></div>
+    
+    <div class="bg-image">
+        <img src="{{ url_for('static', filename='img/index.png') }}" alt="cover">
+    </div>
+{% endblock %}

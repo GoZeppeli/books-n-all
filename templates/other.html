@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+    <script>
+        r = '{{ result }}'
+        console.log(r)
+
+
+        function display(data){
+            r = data
+            document.querySelector('div.search').innerHTML = ""
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth",
+            })
+            data.forEach(el => {
+                var a = document.createElement("div")
+                a.classList.add('card')
+                a.id = el._id
+                var b = document.createElement("h1")
+                b.innerHTML = el.name 
+
+                var c = document.createElement("h3")
+                var c2 = document.createElement("span")
+                c.innerHTML = "de "
+                c2.innerHTML = el.author
+                c.appendChild(c2)
+
+                var d = document.createElement("img")
+                var d2 = document.createElement("div")
+                d2.classList.add('img-wrap')
+                d.src = el.img 
+                d.onerror = function () {
+                    this.onerror = null; 
+                    this.src = '{{ url_for('static', filename='img/no-img.png') }}'; 
+                };
+                d2.append(d)
+
+                var e = document.createElement("p")
+                var e2 = document.createElement("span")
+                e.innerHTML = "Dans la bibliothèque : "
+                if(el.gotIt){
+                    e2.innerHTML = "oui"
+                }
+                else{
+                    e2.innerHTML = "non"
+                }
+                e.append(e2)
+
+                var f = document.createElement("div")
+
+                a.appendChild(d2)
+                f.appendChild(b)
+                f.appendChild(c)
+                f.appendChild(e)
+                a.append(f)
+                document.querySelector('div.search').appendChild(a)
+                });
+            document.querySelector('div.no-search').style.display = "none"
+            document.querySelector('div.search').style.display = "block"
+        }
+
+        async function filterWish(){
+            const response = await fetch("/filterByWish", {
+                method : 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ data: r })
+            })
+
+            const data = await response.json();
+
+                display(data)
+            document.querySelector('.filter').style.display = "none"
+            document.querySelector('.unfilter').style.display = "block"
+
+        }
+
+        async function unfilter(){  
+            document.querySelector('div.no-search').style.display = "block"
+            document.querySelector('div.search').style.display = "none"
+            document.querySelector('.filter').style.display = "block"
+            document.querySelector('.unfilter').style.display = "none"
+        r = '{{ result|tojson    }}'
+           
+        }
+        
+    </script>
+
+    <div class="list-wrapper">
+        <div class="search-wrap">
+            <div class="white"></div>
+            <form action="/" method="POST">
+                <input type="text" id="search" name="search" placeholder="Rechercher un livre..."  autocomplete="off">
+            </form>
+            <div class="other-block" >
+                <div class="filter" onclick=filterWish()>
+                    <h1>voir la liste d'envie</h1>
+                </div>
+                <div class="unfilter" onclick=unfilter()>
+                    <h1>voir tous les livres</h1>
+                </div>
+                <a href="/submit">
+                <div class="advice">
+                    <h1>conseiller un livre</h1>
+                </div></a>
+            </div>
+        </div>
+        
+    
+        <script>
+            var a = document.querySelector('#search')
+            a.addEventListener('input', async () => {
+                const response = await fetch("/search", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ value: a.value, data: r })
+                })
+    
+                const data = await response.json();
+
+                display(data)
+    
+            })
+        </script>
+        <p style="display: none;" id="help-js">{{ result }}</p>
+
+        <div class="scroll-wrapper">
+            <div class="no-search">
+                {% for item in result %}
+                    <div class="card" id="{{ item['_id'] }}">
+                        <div class="img-wrap">
+                            <img src="{{ item['img'] }}" alt="Couverture de {{ item['name'] }}" onerror="this.onerror=null;this.src='{{ url_for('static', filename='img/no-img.png') }}';"/>
+                        </div>
+                        <div>
+                            <h1>{{ item["name"] }}</h1>
+                            <h3>de <span>{{ item["author"] }}</span></h3>
+                            <p>Dans la bibliothèque :
+                                {% if item["gotIt"] %}
+                                    <span>oui</span>
+                                {% else %}
+                                    <span>non</span>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="search"></div>
+        </div>
+    </div>
+{% endblock %}

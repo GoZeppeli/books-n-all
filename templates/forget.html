@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+<style>
+    body {
+        overflow: hidden;
+    }
+
+    .circle-login button {
+        font-size: 55px;
+    }
+
+</style>
+
+        <div class="circle-login">
+            <form method="POST" action="/forget">
+                <h1>Nom d'utilisateur</h1>
+                <input type="text" name="username" required  autocomplete="off">
+                <h1>Question de sécurité choisie</h1>
+                <select name="question" id="question" required>
+                    <option value="">--Choisir une question--</option>
+                        <option value="livre">Mon livre préféré</option>
+                        <option value="ami">Le nom de mon-ma meilleur-e ami-e</option>
+                        <option value="animal">Le nom de mon premier animal de compagnie</option>
+                </select>
+                <h1>Réponse</h1>
+                <input type="text" name="answer" required  autocomplete="off">
+                <button type="submit">nouveau mot de passe</button>
+            </form>
+        </div>
+
+        <div class="bg-image">
+            <img src="{{ url_for('static', filename='img/index.png') }}" alt="cover">
+        </div>
+
+{% endblock %}

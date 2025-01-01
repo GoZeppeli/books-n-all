@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
+
+    <div class="right-index">
+        <div class="wrapper">
+            <a href="/login" class="links"><div class="circle-wrapper">se connecter</div></a>
+            <a href="/register" class="links"><div class="circle-wrapper">créer un compte</div></a>            
+            <a href="/logout" class="links"><div class="circle-wrapper">se déconnecter</div></a>            
+        </div>
+    </div>
+
+    <div class="central-index">
+        <img src="{{ url_for('static', filename='img/index.png') }}" alt="cover">
+    </div>
+    <div class="central-circle"></div>
+
+    <div class="info">
+        <p>sur books n all, tu peux réferencer les livres de ta bibliothèque, et enregistrer des livres dans ta liste d’envie. il est aussi possible de recommander des livres à d’autres utilisateurs et d’accepter ou de rejeter les recommandations qui te sont faites.</p>
+    </div>
+    
+{% endblock %}

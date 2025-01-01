@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+    <form action="/add" method="POST">
+        <label for="name">Nom du livre:</label>
+        <input type="text" id="name" name="name" required>
+       
+        <br><br>
+
+        <label for="author">Nom de l'auteur·rice:</label>
+        <input type="text" id="author" name="author" required>
+       
+        <br><br>
+
+        <label for="img">Lien vers l'image: </label>
+        <input type="text" id="img" name="img">
+       
+        <br><br>
+
+        <label for="description">Description: </label>
+        <input type="text" id="description" name="description">
+       
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}

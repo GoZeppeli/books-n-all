@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<div class="edit-block" style="display: block;">
+    <form id="edit-form" method="POST" action="/submit">
+        <h1>A qui recommander ce livre ?</h1>
+        <select name="userfor" id="userfor" required style="margin-top: 10px;">
+            <option value="">--Choisir un autre utilisateur--</option>
+            {% for item in users %}
+                <option value="{{ item._id }}">{{ item.username }}</option>
+            {% endfor %}
+          </select>
+
+        <h1 >Nom du livre :</h1>
+        <input type="text" id="edit-name" name="name" required>
+    
+        <h1 >Nom de l'auteur·rice:</h1>
+        <input type="text" id="edit-author" name="author" required>
+
+        <h1 >Lien vers l'image:</h1>
+        <input type="text" id="edit-img" name="img" required>
+        
+        <button type="submit">valider les modifications</button>
+    </form>
+</div>
+{% endblock %}

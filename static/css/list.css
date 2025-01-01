@@ -1,0 +1,318 @@
+.list-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-wrap {
+    position: sticky;
+    top: -25px;
+    margin-top: -50px;
+    margin-bottom: 50px;
+    background-color: white;
+}
+
+.white {
+    height: 50px;
+    width: 50vw;
+    background-color: white;
+}
+
+#search {
+    border: none;
+    font-family: 'Cascadia Code';
+    background-color: #720000;
+    color: #fff7d3;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 18px;
+    width: 50vw;
+    padding-left: 6px;
+}
+
+.add-block {
+    cursor: pointer;
+    border-radius: 10px;
+    padding-left: 6px;
+    margin-top: 10px;
+    height: 50px;
+    background-color: #fff7d3;
+    display: flex;
+    justify-content: center;
+    border: 4px solid #720000;
+    box-sizing: border-box;
+    align-items: center;
+    font-family: 'Grobe Deutschmeister';
+    color: #720000;
+    font-size: 15px;
+    box-shadow: 0px 30px 20px 10px white;
+    transition: 0.3s;
+}
+
+.add-block:hover {
+    border-width: 6px;
+    font-size: 13px;
+}
+
+.other-block {
+    margin-top: 10px;
+    height: 50px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Grobe Deutschmeister';
+    color: #720000;
+    font-size: 15px;
+    box-shadow: 0px 30px 20px 10px white;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.other-block div {
+    border: 4px solid #720000;
+    background-color: #fff7d3;
+    box-sizing: border-box;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.unfilter {
+    display: none;
+    text-align: center;
+}
+
+.other-block a {
+    text-decoration: none;
+    flex-grow: 1;
+    color: #720000;
+}
+
+.other-block div:hover {
+    border-width: 6px;
+    font-size: 13px;
+}
+
+#search::placeholder {
+    color: #fff7d370;
+}
+
+#search:focus {
+    outline: none;
+}
+
+.scroll-wrapper {
+    width: 50vw;
+}
+
+.img-wrap {
+    height: 300px;
+    width: 200px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.img-wrap img {
+    height: 100%;
+}
+
+.card {
+    display: grid;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    border-bottom:solid 2px #720000 ;
+    grid-template-columns: 200px 1fr;
+    gap: 15px;
+}
+
+.card h1 {
+    font-family: 'Grobe Deutschmeister';
+    color: #720000;
+}
+
+.card h3 {
+    font-family: 'Cascadia Code';
+    font-size: 16px;
+}
+
+.card h3 span {
+    color: #720000;
+}
+
+.card p {
+    font-family: 'Cascadia Code';
+    font-size: 13px;
+    margin-top: 10px;
+    flex-grow: 1;
+}
+
+.card p span {
+    color: #720000;
+}
+
+.card div:nth-child(2){
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.big-btn {
+    background-color: #fff7d3;
+    align-self: center;
+    display: flex;
+    gap: 10px;
+    font-family: 'Grobe Deutschmeister';
+    color: #720000;
+    padding: 5px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+}
+
+
+.big-btn h2:hover{
+    transform: translateY(-2px);
+}
+
+.edit-block {
+    height: 100vh;
+    width: 70vh;
+    padding: 0 10vh;
+    background-color: #720000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.edit-block input {
+    border: none;
+    display: inline;
+    font-family: 'Cascadia Code';
+    background-color: #fff7d350;
+    border-radius: 10px;
+    height: 60px;
+    font-size: 30px;
+    color: #fff7d3;
+}
+
+.edit-block input:focus {
+    outline: none;
+}
+
+.edit-close {
+    align-self: flex-start;
+}
+
+.edit-block h1 {
+    font-family: "Cascadia Code";
+    color: #fff7d3;
+    font-size: 25px;
+    margin-top: 50px;
+}
+
+.edit-block button:hover {
+    border: 2px solid #fff7d3;
+    background-color: #720000;
+    color: #fff7d3;
+}
+
+.edit-block select {
+    background-color: transparent;
+    padding: 0 10px;
+    border-radius: 5px;
+    height: 30px;
+    color: #fff7d3;
+    font-family: 'Cascadia Code';
+    margin-bottom: 20px;
+}
+
+.edit-block select:focus {
+    outline: none;
+}
+
+
+
+.edit-block option {
+    background-color: #fff7d3;
+    color: #720000;
+}
+
+.edit-block button {
+
+    margin-top: 30px;
+    border: 2px solid transparent;
+    display: inline;
+    background-color: #fff7d3;
+    height: 80px;
+    border-radius: 50px;
+    font-family: "Grobe Deutschmeister";
+    color: #720000;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.edit-block form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.choose-block button:hover {
+    border: 2px solid #fff7d3;
+    background-color: #720000;
+    color: #fff7d3;
+}
+
+.choose-block select {
+    background-color: transparent;
+    padding: 0 10px;
+    border-radius: 5px;
+    height: 50px;
+    font-size: 20px;
+    color: #fff7d3;
+    font-family: 'Cascadia Code';
+    margin-bottom: 20px;
+}
+
+.choose-block select:focus {
+    outline: none;
+}
+
+
+
+.choose-block option {
+    background-color: #fff7d3;
+    color: #720000;
+}
+
+.choose-block button {
+
+    margin-top: 30px;
+    border: 2px solid transparent;
+    display: inline;
+    background-color: #fff7d3;
+    height: 80px;
+    border-radius: 50px;
+    font-family: "Grobe Deutschmeister";
+    color: #720000;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}

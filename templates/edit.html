@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+    <form action="/edit?q=1" method="POST">
+
+        <button type="submit">Submit</button>
+    </form>
+
+    >
+
+    {% for item in data %}
+        <div>
+            <form action="/edit?q={{ item._id }}" method="POST" class="edit">
+                <label for="name">Nom du livre:</label>
+                <input type="text" id="name" name="name" value="{{ item.name }}">
+            
+                <br><br>
+
+                <label for="author">Nom de l'auteur·rice:</label>
+                <input type="text" id="author" name="author" value="{{ item.author }}">
+            
+                <br><br>
+
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description" value="{{ item.description }}">
+            
+                <br><br>
+
+                <label for="img">Lien vers l'image:</label>
+                <input type="text" id="img" name="img" value="{{ item.img }}">
+                
+                <label for="gotIt">Possédé :</label>
+                    {% if item.gotIt %}
+                        <input type="checkbox" id="gotIt" name="gotIt" checked />
+                    {% else %}
+                        <input type="checkbox" id="gotIt" name="gotIt" />
+                    {% endif %}
+
+
+                <button type="submit">Valider les modifications</button>
+
+            </form>
+            <form action="/delete?q={{ item._id }}" method="POST">
+                <button type="submit">Supprimer</button>
+            </form>
+        </div>
+    {% endfor %}
+
+    {{ data }}
+{% endblock %}

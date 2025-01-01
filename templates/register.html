@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
+
+        <div class="circle-login">
+            <form method="POST" action="/register">
+                <h1>Nom d'utilisateur</h1>
+                <input type="text" name="username" required  autocomplete="off">
+                <h1>Mot de passe</h1>
+                <input type="password" name="password" required  autocomplete="off">
+
+                <h1>Question de sécurité</h1>
+                <select name="question" id="question" required>
+                    <option value="">--Choisir une question--</option>
+                        <option value="livre">Mon livre préféré</option>
+                        <option value="ami">Le nom de mon-ma meilleur-e ami-e</option>
+                        <option value="animal">Le nom de mon premier animal de compagnie</option>
+                    </select>
+
+                <h1>Réponse</h1>
+                <input type="text" name="answer" required  autocomplete="off">
+
+
+
+                <a href="{{ url_for('login') }}">Déjà un compte ?</a>
+                <button type="submit">créer un compte</button>
+            </form>
+        </div>
+
+        <div class="bg-image">
+            <img src="{{ url_for('static', filename='img/index.png') }}" alt="cover">
+        </div>
+{% endblock %}x 

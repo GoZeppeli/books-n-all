@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Flask App{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/list.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/media.css') }}">
+</head>
+<body>    
+    <script>
+        function openmenu(){
+            c = document.querySelector('.menu_circle')
+            c.style.height = "120vh"
+            c.style.width = "120vh"
+            c.style.top = "-10vh"
+            c.style.left = "-40vh"
+            c.classList.remove("hover-circle")
+
+            m = document.querySelector('.menu_title')
+            m.innerHTML = "fermer"
+            m.style.fontFamily = "Cascadia Code"
+            m.style.fontSize = "2em"
+            m.style.top = "5px"
+            m.style.left = "20px"
+            m.style.pointerEvents = "auto"
+
+            u = document.querySelector('.menu_circle ul')
+            u.style.display ="block"
+            u.style.left = "40vh"
+            u.style.opacity = "1"
+            u.style.pointerEvents = "auto"
+
+            o = document.querySelector('.overlay')
+            o.style.display = "block"
+            
+        }
+
+        function closemenu(){
+            c = document.querySelector('.menu_circle')
+            c.style.height = "150px"
+            c.style.width = "150px"
+            c.style.top = "120px"
+            c.style.left = "-15px"
+            c.classList.add("hover-circle")
+
+
+            m = document.querySelector('.menu_title')
+            m.innerHTML = "menu"
+            m.style.fontFamily = "Grobe Deutschmeister"
+            m.style.fontSize = "3em"
+            m.style.top = "158px"
+            m.style.left = "11px"
+            m.style.pointerEvents = "none"
+
+            u = document.querySelector('.menu_circle ul')
+            u.style.left = "-20vh"
+            u.style.opacity = "0"
+            u.style.pointerEvents = "none"
+
+            o = document.querySelector('.overlay')
+            o.style.display = "none"
+        }
+    </script>
+    <div class="logo_home">
+        <div class="circle"></div>
+        <a href="/"><h1 class="logo">books n all</h1></a>
+        <div class="menu_circle hover-circle" onclick="openmenu()">
+            <ul>
+                <li><a href="/">accueil</a></li>
+                <li><a href="/list">ma bibliothèque</a></li>
+                <li><a href="/wish">ma liste d'envie</a></li>
+                <li><a href="/propositions">mes recommandations</a></li>
+                <li><a href="/submit">recommander un livre</a></li>
+                <li><a href="/choose-user">voir d'autres comptes</a></li>
+                <div class="account">
+                    {% if current_user.is_authenticated %}
+                        <p>Connecté en tant que: {{ current_user.username }}</p>
+                    {% else %}
+                        <a href="/login">se connecter ?</a>
+                    {% endif %}
+                </div>
+            </ul>
+        </div>
+        <h1 class="menu_title " onclick="closemenu()">menu</h1>
+        <div class="overlay" onclick=closemenu()></div>
+    </div>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
