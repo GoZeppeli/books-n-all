@@ -8,6 +8,16 @@
         body {
             overflow: hidden;
         }
+
+        .bg-image {
+            display: none;
+        }
+
+        @media (max-width: 1100px) {
+            .bg-image {
+                display: block;
+            }            
+        }
     </style>
 
     <div class="right-index">
@@ -26,5 +36,7 @@
     <div class="info">
         <p>sur books n all, tu peux réferencer les livres de ta bibliothèque, et enregistrer des livres dans ta liste d’envie. il est aussi possible de recommander des livres à d’autres utilisateurs et d’accepter ou de rejeter les recommandations qui te sont faites.</p>
     </div>
-    
+    <div class="bg-image">
+        <img src="{{ url_for('static', filename='img/index.png') }}" alt="cover">
+    </div>
 {% endblock %}
